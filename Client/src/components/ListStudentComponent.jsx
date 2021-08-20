@@ -15,7 +15,7 @@ class ListStudentComponent extends Component {
 
     deleteStudent(id){
         StudentService.deleteStudent(id).then( res => {
-            this.setState({student: this.state.student.filter(student => student.id !== id)});
+            this.setState({students: this.state.students.filter(student => student.id !== id)});
         });
     }
     viewStudent(id){
@@ -27,7 +27,7 @@ class ListStudentComponent extends Component {
 
     componentDidMount(){
         StudentService.getStudents().then((res) => {
-            this.setState({ student: res.data});
+            this.setState({ students: res.data});
         });
     }
 
@@ -38,7 +38,7 @@ class ListStudentComponent extends Component {
     render() {
         return (
             <div>
-                 <h2 className="text-center">Students List</h2>
+                 <h2 className="text-center">Student List</h2>
                  <div className = "row">
                     <button className="btn btn-primary" onClick={this.addStudent}> Add Student</button>
                  </div>
@@ -48,10 +48,9 @@ class ListStudentComponent extends Component {
 
                             <thead>
                                 <tr>
-                                    <th> Student First Name</th>
-                                    <th> Student Last Name</th>
-                                    <th> Student Email Id</th>
+                                    <th> Student Name</th>
                                     <th> Student Address</th>
+                                    <th> Student Email Id</th>
                                     <th> Actions</th>
                                 </tr>
                             </thead>
@@ -60,13 +59,13 @@ class ListStudentComponent extends Component {
                                     this.state.students.map(
                                         student => 
                                         <tr key = {student.id}>
-                                             <td> { student.firstName} </td>   
-                                             <td> {student.lastName}</td>
+                                             <td> { student.name} </td>   
+                                             <td> {student.address}</td>
                                              <td> {student.emailId}</td>
                                              <td>
-                                                 <button onClick={ () => this.editStudent(student.id)} className="btn btn-info">Update </button>
+                                                 <button onClick={ () => this.editStudent(student.id)} className="btn btn-primary">Update </button>
                                                  <button style={{marginLeft: "10px"}} onClick={ () => this.deleteStudent(student.id)} className="btn btn-danger">Delete </button>
-                                                 <button style={{marginLeft: "10px"}} onClick={ () => this.viewStudent(student.id)} className="btn btn-info">View </button>
+                                                 <button style={{marginLeft: "10px"}} onClick={ () => this.viewStudent(student.id)} className="btn btn-primary">View </button>
                                              </td>
                                         </tr>
                                     )

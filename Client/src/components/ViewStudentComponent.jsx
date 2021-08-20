@@ -26,11 +26,11 @@ class ViewStudentComponent extends Component {
                     <div className = "card-body">
                         <div className = "row">
                             <label> Student First Name: </label>
-                            <div> { this.state.student.firstName }</div>
+                            <div> { this.state.student.name }</div>
                         </div>
                         <div className = "row">
                             <label> Student Last Name: </label>
-                            <div> { this.state.student.lastName }</div>
+                            <div> { this.state.student.address }</div>
                         </div>
                         <div className = "row">
                             <label> Student Email ID: </label>

@@ -7,20 +7,20 @@ class UpdateStudentComponent extends Component {
 
         this.state = {
             id: this.props.match.params.id,
-            firstName: '',
-            lastName: '',
+            name: '',
+            address: '',
             emailId: ''
         }
-        this.changeFirstNameHandler = this.changeFirstNameHandler.bind(this);
-        this.changeLastNameHandler = this.changeLastNameHandler.bind(this);
-        this.updateEmployee = this.updateEmployee.bind(this);
+        this.changenameHandler = this.changenameHandler.bind(this);
+        this.changeaddressHandler = this.changeaddressHandler.bind(this);
+        this.updateStudent = this.updateStudent.bind(this);
     }
 
     componentDidMount(){
         StudentService.getStudentById(this.state.id).then( (res) =>{
             let student = res.data;
-            this.setState({firstName: student.firstName,
-                lastName: student.lastName,
+            this.setState({name: student.name,
+                address: student.address,
                 emailId : student.emailId
             });
         });
@@ -28,7 +28,7 @@ class UpdateStudentComponent extends Component {
 
     updateStudent = (e) => {
         e.preventDefault();
-        let student = {firstName: this.state.firstName, lastName: this.state.lastName, emailId: this.state.emailId};
+        let student = {name: this.state.name, address: this.state.address, emailId: this.state.emailId};
         console.log('student => ' + JSON.stringify(student));
         console.log('id => ' + JSON.stringify(this.state.id));
         StudentService.updateStudent(student, this.state.id).then( res => {
@@ -36,12 +36,12 @@ class UpdateStudentComponent extends Component {
         });
     }
     
-    changeFirstNameHandler= (event) => {
-        this.setState({firstName: event.target.value});
+    changenameHandler= (event) => {
+        this.setState({name: event.target.value});
     }
 
-    changeLastNameHandler= (event) => {
-        this.setState({lastName: event.target.value});
+    changeaddressHandler= (event) => {
+        this.setState({address: event.target.value});
     }
 
     changeEmailHandler= (event) => {
@@ -49,7 +49,7 @@ class UpdateStudentComponent extends Component {
     }
 
     cancel(){
-        this.props.history.push('/student');
+        this.props.history.push('/students');
     }
 
     render() {
@@ -63,18 +63,18 @@ class UpdateStudentComponent extends Component {
                                 <div className = "card-body">
                                     <form>
                                         <div className = "form-group">
-                                            <label> First Name: </label>
-                                            <input placeholder="First Name" name="firstName" className="form-control" 
-                                                value={this.state.firstName} onChange={this.changeFirstNameHandler}/>
+                                            <label> Name: </label>
+                                            <input placeholder="Full Name" name="firstName" className="form-control" 
+                                                value={this.state.name} onChange={this.changenameHandler}/>
                                         </div>
                                         <div className = "form-group">
-                                            <label> Last Name: </label>
-                                            <input placeholder="Last Name" name="lastName" className="form-control" 
-                                                value={this.state.lastName} onChange={this.changeLastNameHandler}/>
+                                            <label> Address: </label>
+                                            <input placeholder="Full Address" name="lastName" className="form-control" 
+                                                value={this.state.address} onChange={this.changeaddressHandler}/>
                                         </div>
                                         <div className = "form-group">
                                             <label> Email Id: </label>
-                                            <input placeholder="Email Address" name="emailId" className="form-control" 
+                                            <input placeholder="Univercity Email Address" name="emailId" className="form-control" 
                                                 value={this.state.emailId} onChange={this.changeEmailHandler}/>
                                         </div>
 
