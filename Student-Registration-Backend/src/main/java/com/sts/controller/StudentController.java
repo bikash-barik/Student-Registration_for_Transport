@@ -32,19 +32,19 @@ public class StudentController {
 	@Autowired
 	private StudentRepository studentRepository;
 	
-	// get all employees
+	// get all Students
 	@GetMapping("/students")
-	public List<Student> getAllEmployees(){
+	public List<Student> getAllStudents(){
 		return studentRepository.findAll();
 	}		
 	
-	// create employee rest api
+	// create Student rest api
 	@PostMapping("/students")
 	public Student createStudent(@RequestBody Student student) {
 		return studentRepository.save(student);
 	}
 	
-	// get employee by id rest api
+	// get Student by id rest api
 	@GetMapping("/students/{id}")
 	public ResponseEntity<Student> getStudentById(@PathVariable Long id) {
 		Student student = studentRepository.findById(id)
@@ -52,7 +52,7 @@ public class StudentController {
 		return ResponseEntity.ok(student);
 	}
 	
-	// update employee rest api
+	// update Student rest api
 	
 	@PutMapping("/students/{id}")
 	public ResponseEntity<Student> updateStudent(@PathVariable Long id, @RequestBody Student studentDetails){
@@ -67,7 +67,7 @@ public class StudentController {
 		return ResponseEntity.ok(updatedStudent);
 	}
 	
-	// delete employee rest api
+	// delete Student rest api
 	@DeleteMapping("/students/{id}")
 	public ResponseEntity<Map<String, Boolean>> deleteStudent(@PathVariable Long id){
 		Student student = studentRepository.findById(id)
