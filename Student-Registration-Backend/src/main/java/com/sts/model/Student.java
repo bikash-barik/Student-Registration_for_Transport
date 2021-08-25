@@ -18,22 +18,41 @@ public class Student {
 	@Column(name = "name")
 	private String Name;
 
-	@Column(name = "address")
+		@Column(name = "address")
 	private String address;
 	
 	@Column(name = "email_id")
 	private String emailId;
 	
+	@Column(name = "mobile_no")
+	private String mobileNo;
+	
+	@Column(name = "parance_mobile_no")
+	private String parance_mobileNo;
+	
+	@Column(name = "regd_no")
+	private String regdNo;
+	
+	@Column(name = "pick_up_address")
+	private String pickUpAddress;
+	
 	public Student() {
 		
 	}
 	
-	public Student(String Name, String address, String emailId) {
+	public Student(String name, String address, String emailId, String mobileNo, String parance_mobileNo, String regdNo,
+			String pickUpAddress) {
 		super();
-		this.Name = Name;
+		Name = name;
 		this.address = address;
 		this.emailId = emailId;
+		this.mobileNo = mobileNo;
+		this.parance_mobileNo = parance_mobileNo;
+		this.regdNo = regdNo;
+		this.pickUpAddress = pickUpAddress;
 	}
+	
+
 	public long getId() {
 		return id;
 	}
@@ -58,5 +77,39 @@ public class Student {
 	public void setEmailId(String emailId) {
 		this.emailId = emailId;
 	}
+	public String getMobileNo() {
+		return mobileNo;
+	}
+
+	public void setMobileNo(String mobileNo) {
+		this.mobileNo = mobileNo;
+	}
+
+	public String getParance_mobileNo() {
+		return parance_mobileNo;
+	}
+
+	public void setParance_mobileNo(String parance_mobileNo) {
+		this.parance_mobileNo = parance_mobileNo;
+	}
+
+	public String getRegdNo() {
+		return regdNo;
+	}
+
+	public void setRegdNo(String regdNo) {
+		this.regdNo = regdNo;
+	}
+
+	public String getPickUpAddress() {
+		return pickUpAddress;
+	}
+
+	public void setPickUpAddress(String pickUpAddress) {
+		this.pickUpAddress = pickUpAddress;
+	}
+
+
+
 }
 

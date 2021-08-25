@@ -32,19 +32,19 @@ public class StudentController {
 	@Autowired
 	private StudentRepository studentRepository;
 	
-	// get all Students
+	// get all student
 	@GetMapping("/students")
 	public List<Student> getAllStudents(){
 		return studentRepository.findAll();
 	}		
 	
-	// create Student rest api
+	// create student rest api
 	@PostMapping("/students")
 	public Student createStudent(@RequestBody Student student) {
 		return studentRepository.save(student);
 	}
 	
-	// get Student by id rest api
+	// get student by id rest api
 	@GetMapping("/students/{id}")
 	public ResponseEntity<Student> getStudentById(@PathVariable Long id) {
 		Student student = studentRepository.findById(id)
@@ -52,7 +52,7 @@ public class StudentController {
 		return ResponseEntity.ok(student);
 	}
 	
-	// update Student rest api
+	// update student rest api
 	
 	@PutMapping("/students/{id}")
 	public ResponseEntity<Student> updateStudent(@PathVariable Long id, @RequestBody Student studentDetails){
@@ -62,12 +62,17 @@ public class StudentController {
 		student.setName(studentDetails.getName());
 		student.setaddress(studentDetails.getaddress());
 		student.setEmailId(studentDetails.getEmailId());
+		student.setMobileNo(studentDetails.getMobileNo());
+		student.setParance_mobileNo(studentDetails.getParance_mobileNo());
+		student.setRegdNo(studentDetails.getRegdNo());
+		student.setPickUpAddress(studentDetails.getPickUpAddress());
+	
 		
 		Student updatedStudent = studentRepository.save(student);
 		return ResponseEntity.ok(updatedStudent);
 	}
 	
-	// delete Student rest api
+	// delete student rest api
 	@DeleteMapping("/students/{id}")
 	public ResponseEntity<Map<String, Boolean>> deleteStudent(@PathVariable Long id){
 		Student student = studentRepository.findById(id)
