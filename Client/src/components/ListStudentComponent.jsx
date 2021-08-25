@@ -49,8 +49,8 @@ class ListStudentComponent extends Component {
                             <thead>
                                 <tr>
                                     <th> Student Name</th>
-                                    <th> Student Address</th>
-                                    <th> Student Email Id</th>
+                                    <th> Student PicUp Address</th>
+                                    <th> Student Mobile No</th>
                                     <th> Actions</th>
                                 </tr>
                             </thead>
@@ -60,8 +60,8 @@ class ListStudentComponent extends Component {
                                         student => 
                                         <tr key = {student.id}>
                                              <td> { student.name} </td>   
-                                             <td> {student.address}</td>
-                                             <td> {student.emailId}</td>
+                                             <td> {student.pickUpAddress}</td>
+                                             <td> {student.mobileNo}</td>
                                              <td>
                                                  <button onClick={ () => this.editStudent(student.id)} className="btn btn-primary">Update </button>
                                                  <button style={{marginLeft: "10px"}} onClick={ () => this.deleteStudent(student.id)} className="btn btn-danger">Delete </button>
